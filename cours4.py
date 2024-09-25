@@ -1,3 +1,4 @@
+#%%
 import numpy as np
 
 def methode_grad_fini(f, x, h=1e-5):
@@ -60,3 +61,5 @@ minimum, history = gradient_descent(example_function, x_init, learning_rate=0.1)
 # Résultats
 print("Le minimum trouvé est :", minimum)
 print("Historique des points visités :", history)
+
+# %%
