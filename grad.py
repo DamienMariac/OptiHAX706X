@@ -1,27 +1,34 @@
-#%%
+# %%
 import numpy as np
 
+def fonction(x):
+    return x**2
 
-def f():
-    return 0
-
-def grad_f():
-    return 0
+def gradient(x):
+    return 2*x
 
 
-def gradient_descent(y, lr=0.1, tol=1e-6, max_iter=10000):
-    
-    x = np.random.randn(*y.shape)  # Initialisation aléatoire de x (cf Salmon en L3)
-    
-    for i in range(max_iter):
-        grad = grad_f(x, y)
-        x_new = x - lr * grad 
-        
-        # Critère d'arrêt : si la différence est suffisamment petite
-        if np.linalg.norm(x_new - x) < tol:
-            print(f"Convergence atteinte après {i} itérations.")
-            break
-        x = x_new
-    
-    return x
+def descente_de_gradient(x0, a, n):
+    x = x0
+    historique = [x] 
+
+    for i in range(n):
+        grad = gradient(x)
+        x = x - a * grad  
+        historique.append(x)  
+
+        print(f"Iteration {i+1}: x = {x}, f(x) = {fonction(x)}")
+
+    return x, historique
+
+
+x0 = 10  
+a = 0.1  
+n = 50  
+
+
+x_final, historique = descente_de_gradient(x0, a, n)
+
+print(x_final)
+
 # %%
