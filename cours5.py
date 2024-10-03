@@ -10,31 +10,17 @@ def gradient(A, B, X):
     return np.dot(A, X) - B
 
 
-def gradient_descent(A, B, learning_rate=0.01, eps=1e-8, max_iter=10000):
+def gradient_descent(A, B, gam=0.01, eps=1e-8, max_iter=10000):
     X = np.zeros_like(B)
     for i in range(max_iter):
         grad = gradient(A, B, X)
-        X_next = X - learning_rate * grad
+        X_new = X - gam * grad
 
-        if np.linalg.norm(grad) < eps:
-            print(f"Convergence après {i} itérations.")
-            break
-        X = X_next
-    return X
-
-def gradient_descent(A, B, a=0.01, eps=1e-10, iter=10000):
-    X = np.zeros_like(B)  
-    for i in range(iter):
-        grad = gradient(A, B, X)
-        X_new = X - a * grad
-        
-        
         if np.linalg.norm(X_new - X) < eps:
             break
-       
         X = X_new
-    
     return X
+
 
 
 n = 10 
@@ -42,7 +28,7 @@ A = hilbert(n)
 x_target = np.ones(n)  
 B = np.dot(A, x_target)  
 X_init = np.zeros(n)
-X_solution = gradient_descent(A, B, X_init, learning_rate=0.1)
+X_solution = gradient_descent(A, B, X_init)
 erreur = np.linalg.norm(X_solution - x_target)
 
 
@@ -81,7 +67,7 @@ A = hilbert(n)
 B = np.dot(A, np.ones(n))
 
 
-X_approx = gradient_descent(A, B, a=0.1)
+X_approx = gradient_descent(A, B, a=0.01)
 
 
 X_theoretical = np.ones(n)
