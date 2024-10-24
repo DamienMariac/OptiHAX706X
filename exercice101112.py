@@ -90,7 +90,6 @@ def solve_with_penalty(x0, mu_values):
 x0 = np.array([1.0, -1.0, 1.0])
 
 mu_values = np.logspace(-2, 3, 100) 
-
 solutions = solve_with_penalty(x0, mu_values)
 
 J_values = [sol[1] for sol in solutions]  
@@ -115,18 +114,14 @@ print("Vérification de la contrainte h(x) =", h_opt)
 import numpy as np
 from scipy.optimize import fsolve
 
-# Fonction objectif J(x)
 def J(x):
     return x[0]**2 - 4*x[0] - x[0]*x[1] + x[0]*x[2] + x[1]*x[2]
 
-# Contrainte h(x)
 def h(x):
     return x[0] + x[1] + x[2] - 1
 
-# Dérivées partielles de Lagrange (fonction de Lagrange)
 def lagrange_system(vars):
     x1, x2, x3, lambda_ = vars
-    # Gradient de Lagrange
     dL_dx1 = 2*x1 - 4 - x2 + x3 + lambda_
     dL_dx2 = -x1 + x3 + lambda_
     dL_dx3 = x1 + x2 + lambda_
@@ -145,5 +140,3 @@ x1_opt, x2_opt, x3_opt, lambda_opt = solution
 print("Solution optimale : x1 =", x1_opt, ", x2 =", x2_opt, ", x3 =", x3_opt)
 print("Valeur optimale de J(x) =", J([x1_opt, x2_opt, x3_opt]))
 print("Vérification de la contrainte h(x) =", h([x1_opt, x2_opt, x3_opt]))
-
-# %%
