@@ -24,9 +24,10 @@ x0 = [1.0, 1.0]
 pas = 0.01  
 n = 100  
 
-
 x_min = gradient_descent(x0, pas, n)
 print(f"minimum en x = {x_min} avec j(x) = {j(x_min)}")
+
+
 # %%
 
 # Autre version avec un critere d'arret

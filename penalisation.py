@@ -1,4 +1,3 @@
-#%%
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -35,8 +34,7 @@ max_iter = 1000
 Alphas = np.linspace(0, 30, num=100)
 X_alphas = np.array([Penalisation(tildJ_alpha([alpha]), x0, 1e-1, rho, max_iter) for alpha in Alphas])
 # print(X_alphas)
-
-
+# %%
 print(len(X_alphas))
 E_alphas = [E(x)[0] for x in X_alphas]
 J_alphas = [J(x) for x in X_alphas]
@@ -55,4 +53,3 @@ plt.xlabel("alpha")
 plt.ylabel("dist to J theoretical min")
 plt.tight_layout()
 plt.legend()
-# %%
