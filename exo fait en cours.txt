@@ -19,3 +19,6 @@ chapitre 14.3 la triple équivalence
 27
 
 preparer l'exo 50
+
+machine learning
+39
